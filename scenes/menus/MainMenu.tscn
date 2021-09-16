@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/menus/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/menus/MainMenu.gd" type="Script" id=2]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 442.0
+margin_top = 143.0
+margin_right = 581.0
+margin_bottom = 157.0
+text = "Beto's Delivery Tower"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 300 )
+alignment = 1
+
+[node name="Play" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 101.0
+margin_bottom = 131.0
+focus_neighbour_top = NodePath("../Exit")
+focus_neighbour_bottom = NodePath("../Settings")
+focus_mode = 1
+text = "Play"
+arrow_margin_from_center = 45
+
+[node name="Settings" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+focus_neighbour_top = NodePath("../Play")
+focus_neighbour_bottom = NodePath("../Exit")
+focus_mode = 1
+text = "Settings"
+arrow_margin_from_center = 59
+
+[node name="Exit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 169.0
+margin_bottom = 199.0
+focus_neighbour_top = NodePath("../Settings")
+focus_neighbour_bottom = NodePath("../Play")
+focus_mode = 1
+text = "Exit"
+arrow_margin_from_center = 43
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

@@ -1,0 +1,492 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Debug UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/FloorMaterial/FloorMaterial.tres" type="Material" id=4]
+[ext_resource path="res://scenes/KillAreaObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=6]
+[ext_resource path="res://scenes/CheckpointObject.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/jupitertest2.png" type="Texture" id=8]
+[ext_resource path="res://scenes/EndgoalObject.tscn" type="PackedScene" id=9]
+
+[sub_resource type="SphereShape" id=1]
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = ExtResource( 8 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+ambient_light_color = Color( 0.25098, 0.341176, 0.32549, 1 )
+ambient_light_energy = 1.11
+ambient_light_sky_contribution = 0.59
+fog_color = Color( 0.361847, 0.554688, 0.52115, 1 )
+tonemap_mode = 2
+tonemap_white = 3.25
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 6 )
+
+[node name="TEST RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98115, -3.44461 )
+
+[node name="CSGSphere" type="CSGSphere" parent="TEST RigidBody"]
+
+[node name="CollisionShape" type="CollisionShape" parent="TEST RigidBody"]
+shape = SubResource( 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+target_path = NodePath("../Tower/delivery_tower_model")
+
+[node name="Tower" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52194, 0 )
+turn_speed = 15
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="floor" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.985762, 0.168145, 0, -0.168145, 0.985762, 0, 0, 0 )
+use_collision = true
+width = 25.7329
+depth = 675.732
+material = ExtResource( 4 )
+
+[node name="floor3" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.990401, 0.138222, 0, -0.138222, 0.990401, 0, -149.256, -713.939 )
+use_collision = true
+width = 25.7329
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor4" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.99856, 0.0536431, 0, -0.0536431, 0.99856, 0, -260.489, -1297.46 )
+use_collision = true
+width = 79.2238
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor5" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.99856, 0.0536431, 0, -0.0536431, 0.99856, -28.7805, -288.491, -1811.23 )
+use_collision = true
+width = 17.2441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor7" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.99856, 0.0536431, 0, -0.0536431, 0.99856, -53.8734, -313.381, -2263.58 )
+use_collision = true
+width = 69.0949
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor8" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.99856, 0.0536431, 0, -0.0536431, 0.99856, 54.6584, -313.381, -2263.58 )
+use_collision = true
+width = 69.0949
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor9" type="CSGBox" parent="World"]
+transform = Transform( 0.971685, -0.0189945, -0.235514, 0, 0.996763, -0.0803903, 0.236279, 0.0781141, 0.96854, 138.852, -313.381, -2765.24 )
+use_collision = true
+width = 107.076
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor11" type="CSGBox" parent="World"]
+transform = Transform( 0.927464, -0.079173, -0.365433, -0.0783308, 0.914499, -0.396934, 0.365614, 0.396767, 0.841963, 233.873, -256.015, -3094.74 )
+use_collision = true
+width = 107.076
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor12" type="CSGBox" parent="World"]
+transform = Transform( 0.950332, -0.215826, -0.224246, 0.210057, 0.976432, -0.0495664, 0.229659, 0, 0.973271, 399.605, -154.338, -3591.46 )
+use_collision = true
+width = 186.846
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor13" type="CSGBox" parent="World"]
+transform = Transform( 0.925203, -0.354248, 0.136043, 0.361065, 0.932108, -0.0283894, -0.11675, 0.0753863, 0.990296, 408.516, -152.547, -4075.27 )
+use_collision = true
+width = 186.846
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor14" type="CSGBox" parent="World"]
+transform = Transform( 0.823905, -0.549427, 0.138958, 0.55457, 0.832134, 0.00203419, -0.11675, 0.0753863, 0.990296, 375.271, -152.547, -4621.74 )
+use_collision = true
+width = 186.846
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor15" type="CSGBox" parent="World"]
+transform = Transform( 0.756931, -0.638076, 0.141116, 0.650645, 0.755992, -0.0716715, -0.0609507, 0.146067, 0.987395, 321.045, -131.133, -5136.73 )
+use_collision = true
+width = 186.846
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor16" type="CSGBox" parent="World"]
+transform = Transform( 0.961979, 0.252287, 0.104623, -0.258627, 0.964574, 0.0520426, -0.0877865, -0.0771222, 0.993149, 75.8399, -173.076, -5784.62 )
+use_collision = true
+width = 223.802
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor17" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.947283, 0.320398, 0, -0.320398, 0.947283, 55.162, -302.243, -6299.95 )
+use_collision = true
+width = 223.802
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor18" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.947283, 0.320398, 0, -0.320398, 0.947283, 55.162, -472.477, -6770.41 )
+use_collision = true
+width = 178.118
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor19" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.947283, 0.320398, 0, -0.320398, 0.947283, 55.162, -642.86, -7239.64 )
+use_collision = true
+width = 108.976
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor20" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.947283, 0.320398, 0, -0.320398, 0.947283, 55.162, -817.492, -7743.91 )
+use_collision = true
+width = 70.2856
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor21" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.947283, 0.320398, 0, -0.320398, 0.947283, 55.162, -977.536, -8211.56 )
+use_collision = true
+width = 37.1409
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor22" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.906426, 0.422365, 0, -0.422365, 0.906425, 55.162, -1176.32, -8692.8 )
+use_collision = true
+width = 37.1409
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor23" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.906426, 0.422365, 0, -0.422365, 0.906425, 55.162, -1394.33, -9154.1 )
+use_collision = true
+width = 37.1409
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor24" type="CSGBox" parent="World"]
+transform = Transform( 0.975218, -0.216466, -0.045723, 0.221242, 0.954166, 0.201544, 0, -0.206665, 0.978411, 55.162, -1632.04, -9689.16 )
+use_collision = true
+width = 96.5363
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor25" type="CSGBox" parent="World"]
+transform = Transform( 0.941959, -0.314137, 0.118446, 0.3087, 0.949122, 0.0622255, -0.131967, -0.0220495, 0.991008, -19.9285, -1703.96, -10137.2 )
+use_collision = true
+width = 186.341
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor26" type="CSGBox" parent="World"]
+transform = Transform( 0.875737, -0.400256, 0.269958, 0.391616, 0.915945, 0.0876427, -0.282346, 0.0289677, 0.958875, -144.366, -1758.47, -10692.6 )
+use_collision = true
+width = 186.341
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor27" type="CSGBox" parent="World"]
+transform = Transform( 0.919258, 0, 0.393653, 0, 1, 0, -0.393653, 0, 0.919259, -340.554, -1801.1, -11271.4 )
+use_collision = true
+width = 272.412
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor28" type="CSGBox" parent="World"]
+transform = Transform( 0.820051, 0, 0.572289, 0, 1, 0, -0.572289, 0, 0.820052, -581.03, -1805.91, -11713.8 )
+use_collision = true
+width = 272.412
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor29" type="CSGBox" parent="World"]
+transform = Transform( 0.995978, 0.0191981, -0.0875066, -0.0422351, 0.962032, -0.269649, 0.0790074, 0.272261, 0.958974, -945.6, -1805.91, -11967.7 )
+use_collision = true
+width = 761.359
+depth = 612.714
+material = ExtResource( 4 )
+
+[node name="floor46" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.99806, 0.0622679, 0, -0.062268, 0.998059, -945.6, -1805.91, -13208.8 )
+use_collision = true
+width = 761.359
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor47" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.979042, 0.203659, 0, -0.203659, 0.979041, -945.6, -2058.7, -14995.2 )
+use_collision = true
+width = 761.359
+depth = 1943.21
+material = ExtResource( 4 )
+
+[node name="floor48" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.995857, 0.090928, 0, -0.0909281, 0.995857, -1205.43, -2353.96, -16742.8 )
+use_collision = true
+width = 237.262
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor51" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.998103, 0.0615711, 0, -0.0615712, 0.998102, -1205.43, -2645.83, -20160.3 )
+use_collision = true
+width = 237.262
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor49" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.995857, 0.090928, 0, -0.0909281, 0.995857, -698.129, -2353.96, -16742.8 )
+use_collision = true
+width = 237.262
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor52" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.998103, 0.0615711, 0, -0.0615712, 0.998102, -698.129, -2649.99, -20227.7 )
+use_collision = true
+width = 237.262
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor50" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.995857, 0.090928, 0, -0.0909281, 0.995857, -952.318, -2514.45, -18500.6 )
+use_collision = true
+width = 336.466
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor53" type="CSGBox" parent="World"]
+transform = Transform( 0.999999, 0, 0, 0, 0.999958, -0.00914539, 0, 0.00914537, 0.999958, -952.318, -2692.06, -21837.2 )
+use_collision = true
+width = 336.466
+depth = 1988.85
+material = ExtResource( 4 )
+
+[node name="floor10" type="CSGBox" parent="World"]
+transform = Transform( 0.968414, 0.0200453, 0.248542, 0, 0.996763, -0.0803903, -0.249349, 0.0778511, 0.965279, -144.846, -313.381, -2765.24 )
+use_collision = true
+width = 107.076
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor30" type="CSGBox" parent="World"]
+transform = Transform( 0.968414, 0.0200453, 0.248542, 0, 0.996763, -0.0803903, -0.249349, 0.0778511, 0.965279, -325.18, -386.063, -3384.75 )
+use_collision = true
+width = 164.481
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor33" type="CSGBox" parent="World"]
+transform = Transform( 0.968414, 0, 0.249349, -0.0695328, 0.960332, 0.270049, -0.239458, -0.278857, 0.929999, -452.84, -510.561, -4014.06 )
+use_collision = true
+width = 287.554
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor34" type="CSGBox" parent="World"]
+transform = Transform( 0.96736, -0.150328, 0.204002, 0.0829179, 0.948493, 0.305752, -0.239458, -0.278857, 0.929999, -612.47, -774.588, -4652.17 )
+use_collision = true
+width = 164.481
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor35" type="CSGBox" parent="World"]
+transform = Transform( 0.96736, -0.150328, 0.204002, 0.0829179, 0.948493, 0.305752, -0.239458, -0.278857, 0.929999, -749.277, -921.603, -5067.18 )
+use_collision = true
+width = 55.5105
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor36" type="CSGBox" parent="World"]
+transform = Transform( 0.977107, -0.144539, 0.156113, 0.122323, 0.982043, 0.143621, -0.174068, -0.121237, 0.977242, -835.446, -1040.85, -5546.38 )
+use_collision = true
+width = 55.5105
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor37" type="CSGBox" parent="World"]
+transform = Transform( 0.977107, -0.144539, 0.156113, 0.199448, 0.877718, -0.435695, -0.0740481, 0.456857, 0.886453, -884.75, -1047.57, -5863.22 )
+use_collision = true
+width = 55.5105
+depth = 174.494
+material = ExtResource( 4 )
+
+[node name="floor38" type="CSGBox" parent="World"]
+transform = Transform( 0.977107, -0.144539, 0.156113, 0.16585, 0.977085, -0.133408, -0.133253, 0.156245, 0.978688, -957.941, -1146.67, -6300.87 )
+use_collision = true
+width = 177.441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor39" type="CSGBox" parent="World"]
+transform = Transform( 0.986095, -0.165759, 0.0118658, 0.165724, 0.975555, -0.144313, 0.0123455, 0.144273, 0.989461, -1002.2, -1073.62, -6808.99 )
+use_collision = true
+width = 177.441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor40" type="CSGBox" parent="World"]
+transform = Transform( 0.998024, -0.0625145, 0.00632583, 0.0627644, 0.996586, -0.0536306, -0.00295155, 0.0539217, 0.998541, -1002.2, -1034.79, -7330.85 )
+use_collision = true
+width = 177.441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor41" type="CSGBox" parent="World"]
+transform = Transform( 0.996075, 0.0821916, -0.0328555, -0.0822661, 0.99661, -0.000917085, 0.0326688, 0.00361638, 0.999459, -1002.2, -1032.4, -7860.56 )
+use_collision = true
+width = 177.441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor42" type="CSGBox" parent="World"]
+transform = Transform( 0.981229, 0.190047, -0.0327605, -0.190063, 0.981768, 0.0026601, 0.0326688, 0.00361638, 0.999459, -1002.2, -1044.46, -8566.7 )
+use_collision = true
+width = 153.379
+depth = 887.0
+material = ExtResource( 4 )
+
+[node name="floor43" type="CSGBox" parent="World"]
+transform = Transform( 0.927326, 0.372914, -0.0316603, -0.370582, 0.926755, 0.0615948, 0.0523109, -0.0453857, 0.997599, -963.94, -1090.6, -9448.19 )
+use_collision = true
+width = 153.379
+depth = 887.0
+material = ExtResource( 4 )
+
+[node name="floor44" type="CSGBox" parent="World"]
+transform = Transform( 0.927326, 0.372914, -0.0316603, -0.356236, 0.905446, 0.230785, 0.11473, -0.202735, 0.972489, -952.44, -1242.92, -10293.4 )
+use_collision = true
+width = 128.911
+depth = 887.0
+material = ExtResource( 4 )
+
+[node name="floor45" type="CSGBox" parent="World"]
+transform = Transform( 0.961252, 0.274489, -0.0255253, -0.275558, 0.959395, -0.0602402, 0.00795358, 0.0649397, 0.997857, -932.517, -1328.3, -10693.8 )
+use_collision = true
+width = 128.911
+depth = 472.842
+material = ExtResource( 4 )
+
+[node name="floor31" type="CSGBox" parent="World"]
+transform = Transform( 0.854095, -0.436081, 0.28347, 0.468945, 0.881383, -0.0570372, -0.224973, 0.181647, 0.957283, -222.632, -352.394, -3437.87 )
+use_collision = true
+width = 164.481
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor32" type="CSGBox" parent="World"]
+transform = Transform( 0.893815, 0.383116, 0.233061, -0.387527, 0.921418, -0.0284601, -0.225651, -0.0648796, 0.972045, -474.583, -349.728, -3363.52 )
+use_collision = true
+width = 164.481
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor6" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.99856, 0.0536431, 0, -0.0536431, 0.99856, 29.1351, -288.491, -1811.23 )
+use_collision = true
+width = 17.2441
+depth = 540.839
+material = ExtResource( 4 )
+
+[node name="floor2" type="CSGBox" parent="World"]
+transform = Transform( 1, 0, 0, 0, 0.993286, -0.115682, 0, 0.115682, 0.993286, 0, -51.8256, -335.322 )
+use_collision = true
+width = 97.0669
+depth = 124.472
+material = ExtResource( 4 )
+
+[node name="EndgoalArea" parent="." instance=ExtResource( 9 )]
+transform = Transform( 150, 1.31134e-05, 0, -1.31129e-05, 149.994, -0.182908, -1.19927e-07, 1.37181, 19.9992, -946.597, -2544.85, -22739 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( -0.585821, 0, -0.81044, 0, 1, 0, 0.81044, 0, -0.585821, -2.3717, 5.98669, 0 )
+light_energy = 3.0
+shadow_color = Color( 0.141176, 0.223529, 0.203922, 1 )
+
+[node name="KillAreas" type="Spatial" parent="."]
+
+[node name="KillArea" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000262268, 100, 0, 0, 0, 3000, 0, -649.648, -383.987 )
+
+[node name="KillArea2" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000262268, 100, 0, 0, 0, 2000, 0, -1668.83, -6916.23 )
+
+[node name="KillArea4" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000262268, 100, 0, 0, 0, 2000, 0, -2658.96, -12111.8 )
+
+[node name="KillArea6" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000252444, 96.2541, 542.276, 7.11109e-05, -27.1138, 1925.08, 0, -3223.32, -16057.3 )
+
+[node name="KillArea7" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000262268, 100, 0, 0, 0, 6000, -868.829, -3672.42, -23653 )
+
+[node name="KillArea5" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000237149, 90.4224, 854.116, 0.000112004, -42.7058, 1808.45, 0, -2658.96, -10089.4 )
+
+[node name="KillArea3" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000245221, 93.4999, 709.3, 9.30135e-05, -35.465, 1870, 0, -1328.62, -4023.45 )
+
+[node name="CheckpointAreas" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="CheckpointArea" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 20, 0, 0, 0, 30, 0, 0, 0, 1, 2.82341, -122.084, -564.083 )
+
+[node name="CheckpointArea2" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, 56.2755, -300.233, -2151.16 )
+
+[node name="CheckpointArea6" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, -58.1681, -300.233, -2151.16 )
+
+[node name="CheckpointArea3" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 97.5269, 0, 0, 0, 97.5144, 0, 0, 0, 1, 353.429, -104.404, -3333.16 )
+
+[node name="CheckpointArea4" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 201.221, 0, 0, 0, 97.514, 0, 0, 0, 1, 83.291, -104.404, -5724.18 )
+
+[node name="CheckpointArea9" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 201.221, 0, 0, 0, 97.514, 0, 0, 0, 1, -991.505, -1025.8, -7206.54 )
+
+[node name="CheckpointArea5" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 147.707, 1.48503e-06, 0.174198, 0, 97.514, -8.74228e-08, -26.1297, 8.3946e-06, 0.984711, 14.67, -1663.55, -9939.75 )
+
+[node name="CheckpointArea7" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 500, 0, 0, 0, 97.514, 0, 0, 0, 1, -928.929, -1663.55, -12183.6 )
+
+[node name="CheckpointArea8" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 500, 0, 0, 0, 97.514, 0, 0, 0, 1, -928.929, -1781.8, -14019.3 )
+[connection signal="body_entered" from="KillAreas/KillArea" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea2" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea4" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea6" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea7" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea5" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea3" to="." method="_on_KillArea_body_entered"]
+
+[editable path="Tower"]

@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/delivery_tower_6/delivery_tower_model.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/TowerScript.gd" type="Script" id=2]
+[ext_resource path="res://assets/DebugMeshMaterial/debug_mesh_material.tres" type="SphereMesh" id=3]
+
+[sub_resource type="PhysicsMaterial" id=1]
+friction = 0.5
+bounce = 0.2
+
+[sub_resource type="SphereShape" id=2]
+radius = 1.5
+
+[node name="Tower" type="Spatial"]
+process_priority = 1
+script = ExtResource( 2 )
+acceleration = 75
+steering = 14.0
+
+[node name="Ball" type="RigidBody" parent="."]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource( 1 )
+gravity_scale = 10.0
+contacts_reported = 2
+contact_monitor = true
+angular_damp = 5.0
+
+[node name="CollisionShape" type="CollisionShape" parent="Ball"]
+shape = SubResource( 2 )
+
+[node name="DebugMesh" type="MeshInstance" parent="Ball"]
+visible = false
+mesh = ExtResource( 3 )
+material/0 = null
+
+[node name="delivery_tower_model" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0 )
+
+[node name="OmniLight2" type="OmniLight" parent="delivery_tower_model/pipe_cross002" index="0"]
+transform = Transform( -1.77651, 0, 1.55308e-07, 0, 1.77651, 0, -1.55308e-07, 0, -1.77651, 0.00409042, 0.363024, -1.04357 )
+light_color = Color( 1, 0.921569, 0.301961, 1 )
+
+[node name="OmniLight3" type="OmniLight" parent="delivery_tower_model/pipe_cross002" index="1"]
+transform = Transform( -1.77651, 0, 1.55308e-07, 0, 1.77651, 0, -1.55308e-07, 0, -1.77651, 0.00409024, 0.363024, 1.05245 )
+light_color = Color( 1, 0.921569, 0.301961, 1 )
+
+[node name="RayCast" type="RayCast" parent="delivery_tower_model"]
+enabled = true
+
+[node name="SpotLight" type="SpotLight" parent="delivery_tower_model"]
+transform = Transform( 1, 0, 0, 0, 0.976421, 0.215877, 0, -0.215877, 0.976421, 0, 3.87539, -0.563744 )
+light_energy = 10.0
+spot_range = 83.0697
+spot_angle = 21.8156
+
+[node name="OmniLight" type="OmniLight" parent="delivery_tower_model"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.91431, 0.307312 )
+light_color = Color( 1, 0, 0, 1 )
+[connection signal="body_entered" from="Ball" to="." method="_on_Ball_body_entered"]
+
+[editable path="delivery_tower_model"]
