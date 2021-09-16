@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Debug UI.tscn" type="PackedScene" id=2]
@@ -7,23 +7,11 @@
 [ext_resource path="res://scenes/KillAreaObject.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/Game.gd" type="Script" id=6]
 [ext_resource path="res://scenes/CheckpointObject.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/jupitertest2.png" type="Texture" id=8]
+[ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/EndgoalObject.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/menus/FinishScreen.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SphereShape" id=1]
-
-[sub_resource type="PanoramaSky" id=2]
-panorama = ExtResource( 8 )
-
-[sub_resource type="Environment" id=3]
-background_mode = 2
-background_sky = SubResource( 2 )
-ambient_light_color = Color( 0.25098, 0.341176, 0.32549, 1 )
-ambient_light_energy = 1.11
-ambient_light_sky_contribution = 0.59
-fog_color = Color( 0.361847, 0.554688, 0.52115, 1 )
-tonemap_mode = 2
-tonemap_white = 3.25
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 6 )
@@ -42,8 +30,6 @@ target_path = NodePath("../Tower/delivery_tower_model")
 [node name="Tower" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.52194, 0 )
 turn_speed = 15
-
-[node name="Control" parent="." instance=ExtResource( 2 )]
 
 [node name="World" type="Spatial" parent="."]
 
@@ -421,13 +407,7 @@ material = ExtResource( 4 )
 [node name="EndgoalArea" parent="." instance=ExtResource( 9 )]
 transform = Transform( 150, 1.31134e-05, 0, -1.31129e-05, 149.994, -0.182908, -1.19927e-07, 1.37181, 19.9992, -946.597, -2544.85, -22739 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 3 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
-transform = Transform( -0.585821, 0, -0.81044, 0, 1, 0, 0.81044, 0, -0.585821, -2.3717, 5.98669, 0 )
-light_energy = 3.0
-shadow_color = Color( 0.141176, 0.223529, 0.203922, 1 )
+[node name="WorldEnvironment" parent="." instance=ExtResource( 8 )]
 
 [node name="KillAreas" type="Spatial" parent="."]
 
@@ -481,6 +461,10 @@ transform = Transform( 500, 0, 0, 0, 97.514, 0, 0, 0, 1, -928.929, -1663.55, -12
 
 [node name="CheckpointArea8" parent="CheckpointAreas" instance=ExtResource( 7 )]
 transform = Transform( 500, 0, 0, 0, 97.514, 0, 0, 0, 1, -928.929, -1781.8, -14019.3 )
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+
+[node name="FinishScreenMenu" parent="." instance=ExtResource( 10 )]
 [connection signal="body_entered" from="KillAreas/KillArea" to="." method="_on_KillArea_body_entered"]
 [connection signal="body_entered" from="KillAreas/KillArea2" to="." method="_on_KillArea_body_entered"]
 [connection signal="body_entered" from="KillAreas/KillArea4" to="." method="_on_KillArea_body_entered"]

@@ -8,6 +8,7 @@ margin_top = 135.0
 margin_right = 1024.0
 margin_bottom = 165.0
 rect_min_size = Vector2( 0, 30 )
+focus_mode = 1
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,19 +19,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 bbcode_enabled = true
-bbcode_text = "[center]Text Button[/center]"
-text = "Text Button"
+bbcode_text = "[center] Text Button [/center]"
+text = " Text Button "
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="left_img" type="Sprite" parent="."]
-position = Vector2( 432.177, 10.6853 )
+position = Vector2( 412, 10 )
 scale = Vector2( 0.0234532, 0.0234532 )
 texture = ExtResource( 2 )
 
 [node name="right_img" type="Sprite" parent="."]
-position = Vector2( 589.667, 10.6855 )
+position = Vector2( 612, 10 )
 rotation = 3.14159
 scale = Vector2( 0.0234532, 0.0234532 )
 texture = ExtResource( 2 )

@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/menus/MenuButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/finished_text.png" type="Texture" id=2]
+[ext_resource path="res://assets/time_text.png" type="Texture" id=3]
+[ext_resource path="res://assets/great_text.png" type="Texture" id=4]
+[ext_resource path="res://assets/bad_text.png" type="Texture" id=5]
+[ext_resource path="res://assets/numbers_8.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/finished_bg_01.png" type="Texture" id=7]
+[ext_resource path="res://scenes/menus/FinishScreen.gd" type="Script" id=8]
+
+[node name="FinishScreenMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 430.0
+rect_min_size = Vector2( 0, 430 )
+
+[node name="finished_bg" type="Sprite" parent="VBoxContainer/CenterContainer"]
+position = Vector2( 1.12375, -0.374573 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="finished_text" type="Sprite" parent="VBoxContainer/CenterContainer"]
+position = Vector2( 523.712, 94.5152 )
+texture = ExtResource( 2 )
+
+[node name="time_text" type="Sprite" parent="VBoxContainer/CenterContainer"]
+position = Vector2( 378.583, 234.735 )
+texture = ExtResource( 3 )
+
+[node name="great_text" type="Sprite" parent="VBoxContainer/CenterContainer"]
+position = Vector2( 525.659, 341.406 )
+texture = ExtResource( 4 )
+
+[node name="bad_text" type="Sprite" parent="VBoxContainer/CenterContainer"]
+position = Vector2( 512.946, 337.168 )
+texture = ExtResource( 5 )
+
+[node name="TimeLabel" type="RichTextLabel" parent="VBoxContainer/CenterContainer"]
+margin_left = 512.0
+margin_top = 215.0
+margin_right = 512.0
+margin_bottom = 215.0
+custom_fonts/normal_font = ExtResource( 6 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = -5
+custom_constants/shadow_offset_y = -2
+custom_constants/shadow_as_outline = 8
+bbcode_text = "[wave amp=50 freq=5][center]01:42.333[/center][/wave]"
+text = "[wave amp=50 freq=5][center]01:42.333[/center][/wave]"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 434.0
+margin_right = 1024.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 0, 170 )
+alignment = 1
+
+[node name="RetryButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 36.0
+margin_bottom = 66.0
+text = "Retry?"
+arrow_margin_from_center = 50
+
+[node name="TextureButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 70.0
+margin_bottom = 100.0
+text = "Next Stage"
+arrow_margin_from_center = 70
+
+[node name="TextureButton2" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 104.0
+margin_bottom = 134.0
+text = "Back to Main Menu"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.502
+anchor_top = 0.358
+anchor_right = 0.708
+anchor_bottom = 0.435
+margin_left = -0.0480347
+margin_top = 0.199997
+margin_right = 0.00799561
+margin_bottom = -3.05176e-05
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.992157, 0.992157, 0.992157, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = -5
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 0
+text = "1111111"

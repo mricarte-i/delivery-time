@@ -37,14 +37,12 @@ margin_top = 101.0
 margin_bottom = 131.0
 focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Settings")
-focus_mode = 1
 text = "Play"
 arrow_margin_from_center = 45
 
 [node name="Settings" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 focus_neighbour_top = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Exit")
-focus_mode = 1
 text = "Settings"
 arrow_margin_from_center = 59
 
@@ -53,7 +51,6 @@ margin_top = 169.0
 margin_bottom = 199.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Play")
-focus_mode = 1
 text = "Exit"
 arrow_margin_from_center = 43
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]

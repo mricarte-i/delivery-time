@@ -24,6 +24,10 @@ var _rotate_input:= 0.0
 var _grounded:= false
 var _jumping:= false
 
+var _frozen:=  false
+var _saved_av := Vector3.ZERO
+var _saved_lv := Vector3.ZERO
+
 
 func _ready() -> void:
 	ground_ray.add_exception(ball)
@@ -32,7 +36,6 @@ func _physics_process(_delta: float) -> void:
 	tower_mesh.transform.origin = ball.transform.origin + sphere_offset
 	ball.add_central_force(-tower_mesh.global_transform.basis.z * _speed_input)
 	if _jumping:
-		print("JUMP!")
 		ball.add_central_force(tower_mesh.global_transform.basis.y * jump_impulse)
 		_jumping = false
 	
@@ -43,11 +46,18 @@ func _process(delta: float) -> void:
 	else:
 		_grounded = false
 		
-	if Input.is_action_pressed("reset"):
-		death()
+	#finding a way to 'freeze-frame' mid air at end	
+	if Input.is_action_pressed("ui_focus_next"):
+		if _frozen:
+			unfreeze()
+		else:
+			freeze_frame()
 	
 	#get input
-	_handle_movement()
+	if not _frozen:
+		if Input.is_action_pressed("reset"):
+			death()
+		_handle_movement()
 	
 	#flavor mesh animations...
 	icosphere.rotation = ball.rotation * animation_magic_number
@@ -92,6 +102,19 @@ func _align_with_y(xform: Transform, new_y: Vector3) -> Transform:
 	xform.basis.x = -xform.basis.z.cross(new_y)
 	xform.basis = xform.basis.orthonormalized()
 	return xform
+	
+func freeze_frame() -> void:
+	_frozen = true
+	_saved_av = ball.angular_velocity
+	_saved_lv = ball.linear_velocity
+	ball.set_sleeping(true)
+
+func unfreeze() -> void:
+	_frozen = false
+	ball.set_sleeping(false)
+	ball.set_angular_velocity(_saved_av)
+	ball.set_linear_velocity(_saved_lv)
+	
 	
 func death() -> void:
 	get_parent().send_message("Player is dead", 1.0)
