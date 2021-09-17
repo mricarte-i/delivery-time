@@ -17,7 +17,6 @@ func register_level_end() -> void:
 func _process(delta: float) -> void:
 	if level_started:
 		time += delta
-		print("time: ", get_time())
 	
 
 func register_checkpoint(name: String, pos: Vector3) -> bool:
@@ -40,6 +39,7 @@ func clean_up() -> void:
 	last_position = null
 	finished = false
 	level_started = false
+	time = 0
 	
 func get_time() -> String:
 	var mils = fmod(time, 1) * 1000
@@ -47,3 +47,8 @@ func get_time() -> String:
 	var mins = fmod(time, 60*60) /60
 	var time_passed = "%02d:%02d.%03d" % [mins, secs, mils]
 	return time_passed
+	
+func condition() -> bool:
+	if time <= 120.0:
+		return true
+	return false

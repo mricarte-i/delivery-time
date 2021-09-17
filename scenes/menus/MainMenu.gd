@@ -21,7 +21,7 @@ func _on_Play_pressed() -> void:
 
 
 func _on_Settings_pressed() -> void:
-	pass # Replace with function body.
+	OS.set_window_fullscreen(!OS.is_window_fullscreen())
 
 
 func _on_Exit_pressed() -> void:

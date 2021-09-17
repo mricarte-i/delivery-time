@@ -1,0 +1,171 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/fonts/Beto_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/BETOS2.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenes/ui/In-GameUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/checkpoint_text.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "checkpoint_anim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("checkpoint_text:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("checkpoint_text:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("checkpoint_text:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 511.103, -64.9273 ), Vector2( 511.103, 119.4 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("checkpoint_text:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 185.6, 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("checkpoint_text:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.416703, 0.190051 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RememberRlabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RememberRlabel" type="Label" parent="."]
+margin_right = 557.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+text = "PRESS 'R' TO RESTART"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -77.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 0, 60 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopwatchLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_right = 512.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 512, 0 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 1
+bbcode_enabled = true
+bbcode_text = "
+[wave] 01:42.333 [/wave]"
+text = "
+ 01:42.333 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedLabel" type="RichTextLabel" parent="HBoxContainer"]
+margin_left = 516.0
+margin_right = 1028.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 512, 0 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_constants/shadow_offset_x = 3
+custom_constants/shadow_offset_y = 4
+custom_constants/shadow_as_outline = 1
+bbcode_enabled = true
+bbcode_text = "
+[right][wave] 88 MPH [/wave][/right]"
+text = "
+ 88 MPH "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="checkpoint_text" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 511.103, 119.4 )
+texture = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/checkpoint_anim = SubResource( 2 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

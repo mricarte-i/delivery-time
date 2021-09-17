@@ -11,11 +11,6 @@ func _input(event):
 		_set_visible(!get_tree().paused)
 		get_tree().paused = !get_tree().paused
 
-
-func _on_Button_pressed() -> void:
-	get_tree().paused = false
-	_set_visible(false)
-
 func _set_visible(is_visible: bool) -> void:
 	for node in get_children():
 		node.visible = is_visible
@@ -27,3 +22,8 @@ func _on_ExitButton_pressed() -> void:
 
 func _on_RestartButton_pressed() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_PauseButton_pressed() -> void:
+	get_tree().paused = false
+	_set_visible(false)

@@ -33,26 +33,28 @@ rect_min_size = Vector2( 0, 300 )
 alignment = 1
 
 [node name="Play" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 101.0
-margin_bottom = 131.0
+margin_top = 71.0
+margin_bottom = 121.0
 focus_neighbour_top = NodePath("../Exit")
 focus_neighbour_bottom = NodePath("../Settings")
-text = "Play"
-arrow_margin_from_center = 45
+text = "PLAY"
+arrow_margin_from_center = 109
 
 [node name="Settings" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 125.0
+margin_bottom = 175.0
 focus_neighbour_top = NodePath("../Play")
 focus_neighbour_bottom = NodePath("../Exit")
-text = "Settings"
-arrow_margin_from_center = 59
+text = "FULLSCREEN"
+arrow_margin_from_center = 209
 
 [node name="Exit" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 169.0
-margin_bottom = 199.0
+margin_top = 179.0
+margin_bottom = 229.0
 focus_neighbour_top = NodePath("../Settings")
 focus_neighbour_bottom = NodePath("../Play")
-text = "Exit"
-arrow_margin_from_center = 43
+text = "EXIT"
+arrow_margin_from_center = 108
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]

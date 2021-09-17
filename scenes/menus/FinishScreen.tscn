@@ -84,21 +84,22 @@ rect_min_size = Vector2( 0, 170 )
 alignment = 1
 
 [node name="RetryButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 36.0
-margin_bottom = 66.0
-text = "Retry?"
-arrow_margin_from_center = 50
+margin_top = 6.0
+margin_bottom = 56.0
+text = "RETRY?"
+arrow_margin_from_center = 131
 
-[node name="TextureButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 70.0
-margin_bottom = 100.0
-text = "Next Stage"
-arrow_margin_from_center = 70
+[node name="NextButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 60.0
+margin_bottom = 110.0
+text = "NEXT STAGE"
+arrow_margin_from_center = 217
 
-[node name="TextureButton2" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
-margin_top = 104.0
-margin_bottom = 134.0
-text = "Back to Main Menu"
+[node name="ExitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 114.0
+margin_bottom = 164.0
+text = "BACK TO MAIN MENU"
+arrow_margin_from_center = 313
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.502
@@ -117,3 +118,6 @@ custom_constants/shadow_offset_x = -5
 custom_constants/shadow_offset_y = 4
 custom_constants/shadow_as_outline = 0
 text = "1111111"
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/RetryButton" to="." method="_on_RetryButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/NextButton" to="." method="_on_NextButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

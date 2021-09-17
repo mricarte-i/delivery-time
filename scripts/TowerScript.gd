@@ -33,11 +33,12 @@ func _ready() -> void:
 	ground_ray.add_exception(ball)
 	
 func _physics_process(_delta: float) -> void:
-	tower_mesh.transform.origin = ball.transform.origin + sphere_offset
-	ball.add_central_force(-tower_mesh.global_transform.basis.z * _speed_input)
-	if _jumping:
-		ball.add_central_force(tower_mesh.global_transform.basis.y * jump_impulse)
-		_jumping = false
+	if not _frozen:
+		tower_mesh.transform.origin = ball.transform.origin + sphere_offset
+		ball.add_central_force(-tower_mesh.global_transform.basis.z * _speed_input)
+		if _jumping:
+			ball.add_central_force(tower_mesh.global_transform.basis.y * jump_impulse)
+			_jumping = false
 	
 func _process(delta: float) -> void:
 	#set_process(true)
@@ -107,6 +108,8 @@ func freeze_frame() -> void:
 	_frozen = true
 	_saved_av = ball.angular_velocity
 	_saved_lv = ball.linear_velocity
+	ball.set_angular_velocity(Vector3.ZERO)
+	ball.set_linear_velocity(Vector3.ZERO)
 	ball.set_sleeping(true)
 
 func unfreeze() -> void:
@@ -119,6 +122,9 @@ func unfreeze() -> void:
 func death() -> void:
 	get_parent().send_message("Player is dead", 1.0)
 	get_tree().reload_current_scene()
+	
+func get_speed():
+	return ball.linear_velocity.length()
 
 
 func _on_Ball_body_entered(body: Node) -> void:
