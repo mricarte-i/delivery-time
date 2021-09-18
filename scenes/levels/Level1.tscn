@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Debug UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/KillAreaObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Game.gd" type="Script" id=6]
+[ext_resource path="res://scenes/CheckpointObject.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/EndgoalObject.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/menus/FinishScreen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ui/In-GameUI.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/EndgamePoles.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/CheckpointPoles.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/levels/Level2.tscn" type="PackedScene" id=14]
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 6 )
+nextscene = ExtResource( 14 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.6783, 8.4 )
+target_path = NodePath("../Tower/delivery_tower_model")
+
+[node name="Tower" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.4002, 0 )
+turn_speed = 15
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="Floor" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.998066, 0.0621459, 0, -0.0621459, 0.998066, 0, -26.3763, 0 )
+
+[node name="Floor2" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.978913, 0.204274, 0, -0.204274, 0.978913, 0, -206.408, -1024.97 )
+
+[node name="Floor3" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.978913, 0.204274, 0, -0.204274, 0.978913, 0, -504.671, -2164.83 )
+
+[node name="Floor4" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.953821, 0.300373, 0, -0.300373, 0.953821, 0, -1038.31, -3194.78 )
+
+[node name="Floor5" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.867739, 0.497019, 0, -0.497019, 0.867739, 0, -1746.99, -4399.11 )
+
+[node name="EndgoalArea" parent="." instance=ExtResource( 9 )]
+transform = Transform( 150, 1.31134e-05, 0, -1.31129e-05, 149.994, -0.182908, -1.19927e-07, 1.37181, 19.9992, 0, -1844.44, -4701.07 )
+visible = false
+
+[node name="EndgamePoles" parent="." instance=ExtResource( 12 )]
+transform = Transform( 8, 0, 0, 0, 7.86271, 1.47573, 0, -1.47573, 7.86271, 0, -1909.37, -4693.71 )
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 8 )]
+
+[node name="KillAreas" type="Spatial" parent="."]
+visible = false
+
+[node name="KillArea" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000253739, 96.748, 758.843, 6.634e-05, -25.2948, 2902.44, 0, -943.056, 0 )
+
+[node name="KillArea2" parent="KillAreas" instance=ExtResource( 5 )]
+transform = Transform( 3000, 8.74228e-06, 0, -0.000229538, 87.5203, 1451.27, 0.000126874, -48.3756, 2625.61, 0, -3112.33, -5386.63 )
+
+[node name="CheckpointArea" parent="." instance=ExtResource( 7 )]
+transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 20, 0, -425.365, -2202.16 )
+visible = false
+
+[node name="CheckpointPoles" parent="." instance=ExtResource( 13 )]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -524.209, -2214.65 )
+
+[node name="Control" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="FinishScreenMenu" parent="." instance=ExtResource( 10 )]
+
+[node name="UI" parent="." instance=ExtResource( 11 )]
+[connection signal="body_entered" from="KillAreas/KillArea" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea2" to="." method="_on_KillArea_body_entered"]
+
+[editable path="Tower"]
+
+[editable path="CheckpointPoles"]

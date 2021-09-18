@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/checkpoint_pole/checkpoint_pole.tscn" type="PackedScene" id=2]
+
+[node name="CheckpointPoles" type="Spatial"]
+
+[node name="checkpoint_pole_left" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
+
+[node name="SpotLight" type="SpotLight" parent="checkpoint_pole_left"]
+transform = Transform( 0.950472, -5.06372e-08, 0.310809, -0.310809, -1.54852e-07, 0.950472, 0, -1, -1.62921e-07, 0.017045, 12.3754, 0.851065 )
+light_energy = 16.0
+spot_range = 22.2438
+spot_angle = 32.9581
+
+[node name="checkpoint_pole_right" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -10, 0, 0 )
+
+[node name="SpotLight2" type="SpotLight" parent="checkpoint_pole_right"]
+transform = Transform( -0.9373, -3.82623e-07, 0.348523, 0.348523, -1.52706e-07, 0.9373, -3.05411e-07, 1, 2.76484e-07, 1.42685, 13.1689, -0.816826 )
+light_energy = 16.0
+spot_range = 31.0654
+spot_angle = 35.2788

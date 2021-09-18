@@ -48,11 +48,11 @@ func _process(delta: float) -> void:
 		_grounded = false
 		
 	#finding a way to 'freeze-frame' mid air at end	
-	if Input.is_action_pressed("ui_focus_next"):
-		if _frozen:
-			unfreeze()
-		else:
-			freeze_frame()
+	#if Input.is_action_pressed("ui_focus_next"):
+	#	if _frozen:
+	#		unfreeze()
+	#	else:
+	#		freeze_frame()
 	
 	#get input
 	if not _frozen:

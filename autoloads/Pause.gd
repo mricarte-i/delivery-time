@@ -17,10 +17,15 @@ func _set_visible(is_visible: bool) -> void:
 
 
 func _on_ExitButton_pressed() -> void:
+	_set_visible(!get_tree().paused)
+	get_tree().paused = !get_tree().paused
 	get_tree().change_scene("res://scenes/menus/MainMenu.tscn")
 
 
 func _on_RestartButton_pressed() -> void:
+	_set_visible(!get_tree().paused)
+	get_tree().paused = !get_tree().paused
+	Checkpoint.clean_up()
 	get_tree().reload_current_scene()
 
 

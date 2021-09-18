@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Debug UI.tscn" type="PackedScene" id=2]
@@ -11,19 +11,11 @@
 [ext_resource path="res://scenes/EndgoalObject.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/menus/FinishScreen.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/ui/In-GameUI.tscn" type="PackedScene" id=11]
-
-[sub_resource type="SphereShape" id=1]
+[ext_resource path="res://scenes/CheckpointPoles.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/EndgamePoles.tscn" type="PackedScene" id=13]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 6 )
-
-[node name="TEST RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.98115, -3.44461 )
-
-[node name="CSGSphere" type="CSGSphere" parent="TEST RigidBody"]
-
-[node name="CollisionShape" type="CollisionShape" parent="TEST RigidBody"]
-shape = SubResource( 1 )
 
 [node name="GameCamera" parent="." instance=ExtResource( 3 )]
 target_path = NodePath("../Tower/delivery_tower_model")
@@ -406,11 +398,13 @@ depth = 124.472
 material = ExtResource( 4 )
 
 [node name="EndgoalArea" parent="." instance=ExtResource( 9 )]
-transform = Transform( 150, 1.31134e-05, 0, -1.31129e-05, 149.994, -0.182908, -1.19927e-07, 1.37181, 19.9992, -946.597, -2544.85, -22739 )
+transform = Transform( 300, 1.31134e-05, -1.01252e-13, -2.62258e-05, 149.994, -0.274361, -2.39854e-07, 1.37181, 29.9987, -946.597, -2544.85, -22739 )
+visible = false
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 8 )]
 
 [node name="KillAreas" type="Spatial" parent="."]
+visible = false
 
 [node name="KillArea" parent="KillAreas" instance=ExtResource( 5 )]
 transform = Transform( 3000, 8.74228e-06, 0, -0.000262268, 100, 0, 0, 0, 3000, 0, -649.648, -383.987 )
@@ -435,9 +429,10 @@ transform = Transform( 3000, 8.74228e-06, 0, -0.000245221, 93.4999, 709.3, 9.301
 
 [node name="CheckpointAreas" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+visible = false
 
 [node name="CheckpointArea" parent="CheckpointAreas" instance=ExtResource( 7 )]
-transform = Transform( 20, 0, 0, 0, 30, 0, 0, 0, 1, 2.82341, -122.084, -564.083 )
+transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, 2.82341, -122.084, -564.083 )
 
 [node name="CheckpointArea2" parent="CheckpointAreas" instance=ExtResource( 7 )]
 transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, 56.2755, -300.233, -2151.16 )
@@ -446,7 +441,7 @@ transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, 56.2755, -300.233, -2151.16 
 transform = Transform( 40, 0, 0, 0, 30, 0, 0, 0, 1, -58.1681, -300.233, -2151.16 )
 
 [node name="CheckpointArea3" parent="CheckpointAreas" instance=ExtResource( 7 )]
-transform = Transform( 97.5269, 0, 0, 0, 97.5144, 0, 0, 0, 1, 353.429, -104.404, -3333.16 )
+transform = Transform( 120, 0, 0, 0, 97.514, 0, 0, 0, 1, 353.429, -104.404, -3333.16 )
 
 [node name="CheckpointArea4" parent="CheckpointAreas" instance=ExtResource( 7 )]
 transform = Transform( 201.221, 0, 0, 0, 97.514, 0, 0, 0, 1, 83.291, -104.404, -5724.18 )
@@ -469,6 +464,48 @@ visible = false
 [node name="FinishScreenMenu" parent="." instance=ExtResource( 10 )]
 
 [node name="UI" parent="." instance=ExtResource( 11 )]
+
+[node name="CheckpointPoles" parent="." instance=ExtResource( 12 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -127.953, -567.712 )
+
+[node name="CheckpointPoles2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -66.6608, -302.821, -2155.31 )
+
+[node name="CheckpointPoles7" parent="." instance=ExtResource( 12 )]
+transform = Transform( 9.94456, -1.05153, 0, 1.05153, 9.94456, 0, 0, 0, 10, -1002.24, -1037.3, -7224.5 )
+
+[node name="CheckpointPoles8" parent="." instance=ExtResource( 12 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -1002.24, -1684.44, -12181.9 )
+
+[node name="checkpoint_pole_left" parent="CheckpointPoles8" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8126, 0, 0 )
+
+[node name="checkpoint_pole_right" parent="CheckpointPoles8" index="1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -34.5993, 0, 0 )
+
+[node name="CheckpointPoles9" parent="." instance=ExtResource( 12 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -1002.24, -1811.04, -14021.1 )
+
+[node name="checkpoint_pole_left" parent="CheckpointPoles9" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8126, 0, 0 )
+
+[node name="checkpoint_pole_right" parent="CheckpointPoles9" index="1"]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -34.5993, 0, 0 )
+
+[node name="CheckpointPoles3" parent="." instance=ExtResource( 12 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 60.8169, -310.178, -2155.31 )
+
+[node name="CheckpointPoles4" parent="." instance=ExtResource( 12 )]
+transform = Transform( 7.9412, -0.968164, 0, 0.968164, 7.9412, 0, 0, 0, 8, 344.286, -141.714, -3341.07 )
+
+[node name="CheckpointPoles5" parent="." instance=ExtResource( 12 )]
+transform = Transform( 8.79045, 1.93078, 0, -1.93078, 8.79045, 0, 0, 0, 9, 72.3128, -141.714, -5732.5 )
+
+[node name="CheckpointPoles6" parent="." instance=ExtResource( 12 )]
+transform = Transform( 8.47477, -2.68258, 1.40783, 2.7002, 8.58477, 0.103508, -1.37373, 0.324914, 8.8886, -3.5011, -1661.28, -9938.03 )
+
+[node name="EndgamePoles" parent="." instance=ExtResource( 13 )]
+transform = Transform( 30, 0, 0, 0, 30, 0, 0, 0, 30, -920.938, -2677.36, -22738.1 )
 [connection signal="body_entered" from="KillAreas/KillArea" to="." method="_on_KillArea_body_entered"]
 [connection signal="body_entered" from="KillAreas/KillArea2" to="." method="_on_KillArea_body_entered"]
 [connection signal="body_entered" from="KillAreas/KillArea4" to="." method="_on_KillArea_body_entered"]
@@ -478,3 +515,7 @@ visible = false
 [connection signal="body_entered" from="KillAreas/KillArea3" to="." method="_on_KillArea_body_entered"]
 
 [editable path="Tower"]
+
+[editable path="CheckpointPoles8"]
+
+[editable path="CheckpointPoles9"]

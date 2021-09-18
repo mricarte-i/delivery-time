@@ -5,6 +5,7 @@ extends Node
 # var a: int = 2
 # var b: String = "text"
 onready var play = $VBoxContainer/VBoxContainer/Play
+export(PackedScene) var firstlevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +18,7 @@ func _ready() -> void:
 
 
 func _on_Play_pressed() -> void:
-	get_tree().change_scene("res://scenes/TestLevel.tscn")
+	get_tree().change_scene_to(firstlevel)
 
 
 func _on_Settings_pressed() -> void:

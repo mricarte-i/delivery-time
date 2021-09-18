@@ -1,0 +1,126 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scenes/Game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/GameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Tower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Floor.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/WorldEnvironment.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/KillAreaObject.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/CheckpointPoles.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Debug UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/ui/In-GameUI.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/CheckpointObject.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/EndgoalObject.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/EndgamePoles.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/menus/FinishScreen.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/levels/TestLevel.tscn" type="PackedScene" id=14]
+
+[node name="Game" type="Spatial"]
+script = ExtResource( 1 )
+nextscene = ExtResource( 14 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 29.6783, 8.4 )
+target_path = NodePath("../Tower/delivery_tower_model")
+
+[node name="Tower" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24.4002, 0 )
+turn_speed = 15
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="Floor" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.822133, 0.569293, 0, -0.569293, 0.822133, 0, -113.96, 0 )
+
+[node name="Floor2" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, 0, -514.929, -708.38 )
+
+[node name="Floor8" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, 0, -1770.64, -3690.45 )
+
+[node name="Floor9" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.999212, 0.0396609, 0, -0.0396609, 0.999212, 0, -1924.06, -3831.87 )
+
+[node name="Floor10" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.96409, 0.265573, 0, -0.265573, 0.96409, 0, -2401.83, -5046.19 )
+
+[node name="Floor11" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.96409, 0.265573, 0, -0.265573, 0.96409, 0, -2961.45, -6245.58 )
+
+[node name="Floor12" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.999997, -0.00204206, 0, 0.00204206, 0.999997, 0, -3034.07, -6603.99 )
+
+[node name="Floor13" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.978977, 0.203966, 0, -0.203966, 0.978977, -5.13098, -3294.6, -7815.4 )
+
+[node name="Floor14" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 0.911991, -0.401586, -0.0836689, 0.41021, 0.892818, 0.186015, 0, -0.203966, 0.978977, -5.13098, -3739.64, -9130.84 )
+
+[node name="Floor3" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, 38.7726, -822.853, -1428.78 )
+width = 37.9822
+
+[node name="Floor4" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, -46.1927, -822.853, -1428.78 )
+width = 39.9519
+
+[node name="Floor6" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, 38.7726, -1428.31, -2893.22 )
+width = 37.9822
+
+[node name="Floor7" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, -46.1927, -1428.31, -2893.22 )
+width = 39.9519
+
+[node name="Floor5" parent="World" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 0.924212, 0.381877, 0, -0.381877, 0.924212, -5.16007, -1153.64, -2236.43 )
+width = 57.0598
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 5 )]
+
+[node name="KillAreas" type="Spatial" parent="."]
+visible = false
+
+[node name="KillArea" parent="KillAreas" instance=ExtResource( 6 )]
+transform = Transform( 3000, 0, 0, 0, 84.0396, 1625.92, 0, -54.1972, 2521.19, 0, -120.617, 1039.68 )
+
+[node name="KillArea2" parent="KillAreas" instance=ExtResource( 6 )]
+transform = Transform( 3000, 0, 0, 0, 96.8579, 746.12, 0, -24.8707, 2905.74, 0, -4074.41, -8268.25 )
+
+[node name="KillArea4" parent="KillAreas" instance=ExtResource( 6 )]
+transform = Transform( 3000, 0, 0, 0, 100, 0, 0, 0, 3000, 0, -4466.99, -12495.7 )
+
+[node name="KillArea3" parent="KillAreas" instance=ExtResource( 6 )]
+transform = Transform( 3000, 0, 0, 0, 90.2141, 1294.32, 0, -43.144, 2706.42, 0, -2375.26, -3139.27 )
+
+[node name="CheckpointAreas" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
+
+[node name="CheckpointPoles" parent="CheckpointAreas" instance=ExtResource( 7 )]
+transform = Transform( 7.99862, -0.0550826, 0.138115, 0, 7.43084, 2.96355, -0.148693, -2.96304, 7.42956, -0.0193202, -1622.49, -3314.02 )
+
+[node name="CheckpointArea" parent="CheckpointAreas" instance=ExtResource( 10 )]
+transform = Transform( 99.9827, -0.688533, 0.345287, 0, 92.8855, 7.40888, -1.85867, -37.038, 18.5739, 0, -1585.98, -3312.98 )
+visible = false
+
+[node name="Control" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[node name="FinishScreenMenu" parent="." instance=ExtResource( 13 )]
+
+[node name="UI" parent="." instance=ExtResource( 9 )]
+
+[node name="End Goal" type="Spatial" parent="."]
+
+[node name="EndgamePoles" parent="End Goal" instance=ExtResource( 12 )]
+transform = Transform( 8, 0, 0, 0, 7.60767, 2.47453, 0, -2.47452, 7.60768, 15.0269, -3776.32, -9400.56 )
+
+[node name="EndgoalArea" parent="End Goal" instance=ExtResource( 11 )]
+transform = Transform( 150, 0, 0, 0, 142.644, 6.18632, 0, -46.3974, 19.0192, 15.0269, -3768.95, -9377.92 )
+visible = false
+[connection signal="body_entered" from="KillAreas/KillArea" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea2" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea4" to="." method="_on_KillArea_body_entered"]
+[connection signal="body_entered" from="KillAreas/KillArea3" to="." method="_on_KillArea_body_entered"]
+
+[editable path="Tower"]

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Beto's Delivery Tower"
-run/main_scene="res://scenes/menus/MainMenu.tscn"
+run/main_scene="res://scenes/cutscenes/Opening.tscn"
 run/disable_stderr=true
 config/icon="res://icon.png"
 

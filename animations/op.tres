@@ -1,0 +1,31 @@
+[gd_resource type="Animation" load_steps=14 format=2]
+
+[ext_resource path="res://assets/storyboard/storyboard-07.png" type="Texture" id=1]
+[ext_resource path="res://assets/storyboard/storyboard-08.png" type="Texture" id=2]
+[ext_resource path="res://assets/storyboard/storyboard-09.png" type="Texture" id=3]
+[ext_resource path="res://assets/storyboard/storyboard-05.png" type="Texture" id=4]
+[ext_resource path="res://assets/storyboard/storyboard-06.png" type="Texture" id=5]
+[ext_resource path="res://assets/storyboard/storyboard-04.png" type="Texture" id=6]
+[ext_resource path="res://assets/storyboard/storyboard-01.png" type="Texture" id=7]
+[ext_resource path="res://assets/storyboard/storyboard-02.png" type="Texture" id=8]
+[ext_resource path="res://assets/storyboard/storyboard-03.png" type="Texture" id=9]
+[ext_resource path="res://assets/storyboard/storyboard-bg.png" type="Texture" id=10]
+[ext_resource path="res://assets/storyboard/storyboard-10.png" type="Texture" id=11]
+[ext_resource path="res://assets/storyboard/storyboard-12.png" type="Texture" id=12]
+[ext_resource path="res://assets/storyboard/storyboard-11.png" type="Texture" id=13]
+
+[resource]
+resource_name = "op"
+length = 21.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1, 1.4, 1.5, 1.9, 2, 2.2, 2.3, 2.5, 2.6, 2.9, 3, 3.5, 3.6, 5.5, 5.6, 7.6, 7.7, 9.2, 9.3, 12.3, 12.4, 13.6, 13.7, 16.6, 16.7, 17.5, 17.6, 18.4, 18.5, 20.4, 20.5, 21 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 0.450625, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 1 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ), ExtResource( 10 ), ExtResource( 10 ) ]
+}

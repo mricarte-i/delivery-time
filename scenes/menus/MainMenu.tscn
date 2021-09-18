@@ -1,10 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/menus/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/menus/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://scenes/levels/Level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/render-beto-01.png" type="Texture" id=4]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 2 )
+firstlevel = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -28.5732
+margin_top = -3.1748
+margin_right = 867.427
+margin_bottom = 476.825
+rect_scale = Vector2( 0.56, 0.56 )
+texture = ExtResource( 4 )
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0

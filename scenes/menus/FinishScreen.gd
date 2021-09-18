@@ -31,7 +31,7 @@ func _on_RetryButton_pressed() -> void:
 
 func _on_NextButton_pressed() -> void:
 	Checkpoint.clean_up()
-	get_tree().next_level()
+	get_parent().next_level()
 
 
 func _on_ExitButton_pressed() -> void:

@@ -50,4 +50,7 @@ func send_message(msg: String, time: float) -> void:
 	ui.show_message(msg, time)
 	
 func next_level() -> void:
-	print("OTRO NIVEL")
+	if nextscene:
+		get_tree().change_scene_to(nextscene)
+	else:
+		print("oops")
