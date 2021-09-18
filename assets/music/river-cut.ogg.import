@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/river-cut.ogg-016c54e2e8d3394918ff76bef767bbb9.oggstr"
+
+[deps]
+
+source_file="res://assets/music/river-cut.ogg"
+dest_files=[ "res://.import/river-cut.ogg-016c54e2e8d3394918ff76bef767bbb9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

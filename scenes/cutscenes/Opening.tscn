@@ -16,6 +16,7 @@ __meta__ = {
 next_scene = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.5
 anims/op = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
