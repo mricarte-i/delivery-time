@@ -32,3 +32,7 @@ func _on_RestartButton_pressed() -> void:
 func _on_PauseButton_pressed() -> void:
 	get_tree().paused = false
 	_set_visible(false)
+
+
+func _on_FullscreenButton_pressed() -> void:
+	OS.set_window_fullscreen(!OS.is_window_fullscreen())

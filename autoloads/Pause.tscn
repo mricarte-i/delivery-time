@@ -35,22 +35,30 @@ __meta__ = {
 }
 
 [node name="PauseButton" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 205.0
-margin_bottom = 255.0
+margin_top = 170.0
+margin_bottom = 220.0
 text = "CONTINUE"
 arrow_margin_from_center = 182
 
+[node name="FullscreenButton" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 240.0
+margin_bottom = 290.0
+text = "FULLSCREEN?"
+arrow_margin_from_center = 237
+
 [node name="RestartButton" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 275.0
-margin_bottom = 325.0
+margin_top = 310.0
+margin_bottom = 360.0
 text = "RESTART LEVEL"
 arrow_margin_from_center = 270
 
 [node name="ExitButton" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 345.0
-margin_bottom = 395.0
+margin_top = 380.0
+margin_bottom = 430.0
 text = "BACK TO MAIN MENU"
 arrow_margin_from_center = 352
 [connection signal="pressed" from="VBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/FullscreenButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/FullscreenButton" to="." method="_on_FullscreenButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]

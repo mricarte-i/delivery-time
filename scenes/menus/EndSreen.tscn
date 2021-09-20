@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/Beto_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/menus/MenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/menus/EndSreen.gd" type="Script" id=3]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 1024, 300 )
+
+[node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 149.0
+margin_top = 146.0
+margin_right = 875.0
+margin_bottom = 154.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 6
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+text = "THANK YOU FOR PLAYING!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 304.0
+margin_right = 1024.0
+margin_bottom = 604.0
+rect_min_size = Vector2( 1024, 300 )
+alignment = 1
+
+[node name="MenuButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 98.0
+margin_bottom = 148.0
+text = "BACK TO MAIN MENU"
+arrow_margin_from_center = 350
+
+[node name="ExitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 152.0
+margin_bottom = 202.0
+text = "EXIT GAME"
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/ExitButton" to="." method="_on_ExitButton_pressed"]
